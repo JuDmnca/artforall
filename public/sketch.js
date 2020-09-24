@@ -12,6 +12,7 @@ slide = () => {
 }
 
 let step1_btn = document.getElementById('step_1_btn');
+let step1_after = document.getElementById('step_1_after');
 let step2_btn = document.getElementById('step_2_btn');
 let result_btn = document.getElementById('result_btn');
 
@@ -47,16 +48,16 @@ var s1 = ( s ) => {
     s.text('Hi, who are you ?', 0, 0)
 
     if (step_1 === true) {
-      rectX = s.width/5
+      rectX = s.width/3
 
       s.fill(from)
-      s.rect(rectX, 200, 20, 60)
+      s.ellipse(-rectX, 100, 60, 60)
       s.fill(interA)
-      s.rect(2*rectX, 200, 20, 60)
+      s.ellipse(-rectX, -100, 60, 60)
       s.fill(interB)
-      s.rect(-rectX, 200, 20, 60)
+      s.ellipse(rectX, 100, 60, 60)
       s.fill(to)
-      s.rect(-2*rectX, 200, 20, 60)
+      s.ellipse(rectX, -100, 60, 60)
     }
   }
   s.keyPressed = function() {
@@ -95,6 +96,7 @@ var s1 = ( s ) => {
         interA = s.lerpColor(from, to, 0.33);
         interB = s.lerpColor(from, to, 0.66);
         step_1 = true;
+        step1_after.style.visibility = 'visible'
         step1_btn.style.visibility = 'visible'
       }
     }
@@ -156,7 +158,7 @@ var s2 = ( s ) => {
     } else if (state === 1) {
       recorder.stop() // stop recorder, and send the result to soundFile
 
-      s.background(144, 247, 132)
+      s.background(48, 66, 250)
       s.text('Recording stopped. Ready for the last step ?', s.width/2, s.height/2)
       state++
       step2_btn.style.visibility = 'visible'
@@ -180,6 +182,7 @@ let centerX = 0.0, centerY = 0.0
 let result = false
 let ender
 let save = false
+let done = false
 
 var s3 = ( s ) => {
   let canvas3
@@ -226,21 +229,24 @@ var s3 = ( s ) => {
   }
 
   function drawresult() {
-    var bg = s.color(25, 25, 25)
-    s.noStroke();
-    s.background(bg)
-    song = soundFile
+    if (!done) {
+      var bg = s.color(25, 25, 25)
+      s.noStroke();
+      s.background(bg)
+      song = soundFile
 
-    // Create a new Amplitude analyzer
-    analyzer = new p5.Amplitude();
+      // Create a new Amplitude analyzer
+      analyzer = new p5.Amplitude();
 
-    // Patch the input to an volume analyzer
-    analyzer.setInput(song);
+      // Patch the input to an volume analyzer
+      analyzer.setInput(song);
 
-    song.play();
+      song.play();
 
-    result = true
-    setTimeout(end, elapsed);
+      result = true
+      setTimeout(end, elapsed);
+      done = true
+    }
   }
 
   function end() {

@@ -80,8 +80,14 @@ button {
 }
 
 #step_1 button {
+  top: 180vh;
+  visibility: hidden;
+}
+
+#step_1_after {
   top: 170vh;
   visibility: hidden;
+  position: absolute;
 }
 
 #step_2 button {
