@@ -1,11 +1,16 @@
 extends layout
 
 block content
-  a(href="/experiment/new") create
-  ul
-    each experiment in experiments
-      li= experiment.title
-        a(href=`/experiment/${experiment.id}`) view the experiment
-    else
-      li There are no experiment
-        
+  a(href="/") Back
+  .container
+    h1 Gallery
+    a(href="/experiment.html") Create a new artwork
+    ul
+      each experiment in experiments
+        li
+          img(src=`/uploads/${experiment.file}`)
+          p=experiment.title
+          a(href=`/experiment/${experiment.id}`) See the artwork
+      else
+        li There are no artwork available :(, let's
+        a(href="/experiment.html") create one

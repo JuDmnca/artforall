@@ -1,7 +1,79 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: Prata;
+  font-style: normal;
+  src: url("../Prata-Regular.ttf");
 }
-a {
-  color: #00b7ff;
+body {
+  font-family: Prata;
+  background-color: #191919;
+  color: #fff;
+  margin: 0;
+}
+body h1 {
+  font-size: 60px;
+}
+body h2 {
+  margin: 0;
+}
+body p {
+  margin: 0 0 40.2px 0;
+}
+body a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 3px;
+}
+body .experiment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body .experiment h1 {
+  text-transform: capitalize;
+  margin: 10px 0 4px 0;
+}
+body .experiment .date {
+  font-size: 10px;
+}
+body .experiment img {
+  width: 80vw;
+}
+body content {
+  display: flex;
+}
+body .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 95vh;
+  justify-content: center;
+}
+body .index a {
+  margin-bottom: 20px;
+}
+body ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0;
+}
+body ul li {
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body ul li p {
+  text-transform: capitalize;
+}
+body ul li a {
+  margin-bottom: 20px;
+}
+body ul li img {
+  width: 40vw;
 }
